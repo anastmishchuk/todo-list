@@ -11,10 +11,12 @@
         <h5><strong>{{ task.content }}</strong>
           {% if task.is_done %}
             <span style="color: green;font-weight: bold;">Done</span>
-            <a class="btn btn-success" style="float: right" href="{% url 'todo:task-undo' pk=task.id %}">Complete</a>
+            <a class="btn btn-success" style="float: right" href="{% url 'todo:task-update-status' pk=task.id %}">
+              Undo</a>
           {% else %}
             <span style="color: red;font-weight: bold;">Not done</span>
-            <a class="btn btn-secondary" style="float: right" href="{% url 'todo:task-complete' pk=task.id %}">Undo</a>
+            <a class="btn btn-secondary" style="float: right" href="{% url 'todo:task-update-status' pk=task.id %}">
+              Complete</a>
           {% endif %}
         </h5>
         <p style="font-size: 12px">Created: {{ task.created_at }}
