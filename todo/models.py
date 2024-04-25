@@ -22,4 +22,4 @@ class Task(models.Model):
         ordering = ("-is_done", "-created_at")
 
     def __str__(self):
-        return self.content
+        return f"{self.content} (tag: {self.tag})"
