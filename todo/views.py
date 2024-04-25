@@ -62,17 +62,9 @@ class TagDeleteView(generic.DeleteView):
     success_url = reverse_lazy("todo:tag-list")
 
 
-class TaskCompleteView(View):
+class TaskUpdateView(View):
     def get(self, request, *args, **kwargs):
         task = Task.objects.get(pk=kwargs["pk"])
-        task.is_done = True
-        task.save()
-        return redirect("todo:index")
-
-
-class TaskUndoView(View):
-    def get(self, request, *args, **kwargs):
-        task = Task.objects.get(pk=kwargs["pk"])
-        task.is_done = False
+        task.is_done = not task.is_done
         task.save()
         return redirect("todo:index")
